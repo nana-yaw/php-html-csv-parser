@@ -3,7 +3,7 @@ namespace App;
 
 class CsvExportableDocument implements ExportableDocumentInterface
 {
-    private function formatData(HtmlDocument $document, Util $formatter): array
+    public function formatData(HtmlDocument $document, Util $formatter): array
     {
         $addressDetails = $formatter::formatAddress($document->getAddress());
         $phoneNumber = $formatter::formatPhoneNumber($document->getPhoneNumber());
@@ -29,18 +29,7 @@ class CsvExportableDocument implements ExportableDocumentInterface
             "Phone Number" => strval($phoneNumber)
         ];
 
-        $this->printCsvContent($data);
-
         return $data;
-    }
-
-    private function printCsvContent(array $data): void
-    {
-        echo nl2br("<h3>CSV Content Below:</h3>\n");
-        foreach ($data as $key => $value) {
-            echo $key . " : " . $value . nl2br("\r\n");
-        }
-        echo nl2br("\r\n");
     }
 
     public function export(HtmlDocument $document, Util $formatter): void

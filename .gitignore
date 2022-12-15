@@ -475,3 +475,6 @@ composer.lock
 
 ###### exported docs
 /wo_export/*
+
+###### PHPUnit
+.phpunit.*
