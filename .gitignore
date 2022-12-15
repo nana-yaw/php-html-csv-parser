@@ -472,3 +472,6 @@ composer.lock
 *.css.map
 *.sass.map
 *.scss.map
+
+###### exported docs
+/wo_export/*

@@ -9,6 +9,12 @@ class Util
         return $formattedValue;
     }
 
+    public static function output(string $data): string
+    {
+        $formattedValue = self::removeExtraWhiteSpaces($data);
+        return $formattedValue;
+    }
+
     public static function print(string $value): void
     {
         echo nl2br($value ."\r\n");
@@ -22,7 +28,8 @@ class Util
 
     public static function formatNte(string $value): float
     {
-        $newVal = str_ireplace(array("$", ","), '', $value);
+        $formattedData = self::output($value);
+        $newVal = str_ireplace(array("$", ","), '', $formattedData);
         return floatval($newVal);
     }
 
@@ -51,7 +58,8 @@ class Util
 
     public static function formatPhoneNumber(string $value): string
     {
-        $newPhoneNumber = str_ireplace("-", '', $value);
+        $newPhoneNumber 
+            = str_ireplace("-", '', self::removeExtraWhiteSpaces($value));
         return $newPhoneNumber;
     }
 }
